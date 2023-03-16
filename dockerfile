@@ -6,9 +6,9 @@ RUN pip3 install flask
 
 WORKDIR /app
 
-COPY flaskApp.py /app
+COPY /pyWeb/flaskApp.py /app
 
-COPY /template /app/template
+COPY /pyWeb/template /app/template
 
 #EXPOSE 5000
 
