@@ -8,7 +8,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = "my-repo"
         DOCKERHUB = credentials('dockerhub')
-        DOCKER_IMAGE_NAME = "my-docker-image"
+        DOCKER_IMAGE_NAME = "my-python-web"
         DOCKER_IMAGE_TAG = "latest"
     }
 
