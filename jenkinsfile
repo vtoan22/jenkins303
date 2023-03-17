@@ -25,7 +25,7 @@ pipeline {
 	stage('Deploy with Ansible') {
             steps {
                 ansiblePlaybook(
-                    playbook: 'deploy-app.yml',
+                    playbook: 'nginx.yaml',
                     inventory: 'hosts',
                     extras: '-vv'
                 )
