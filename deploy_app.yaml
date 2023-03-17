@@ -1,0 +1,20 @@
+---
+- hosts: server
+  become: true
+  #become_user: root
+  #become_method: sudo
+  tasks:
+    - name: Ping check host
+      ping: ~
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Enable service Nginx, in all cases
+      service:
+        name: nginx
+        enabled: yes
+    - name: Start service Nginx, in all cases
+      service:
+        name: nginx
+        state: started
