@@ -22,6 +22,16 @@ pipeline {
             }
         }
         
+	stage('Deploy with Ansible') {
+            steps {
+                ansiblePlaybook(
+                    playbook: 'deploy-app.yml',
+                    inventory: 'hosts',
+                    extras: '-vv'
+                )
+            }
+        }
+
 	stage('Push Docker image') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USR', passwordVariable: 'DOCKERHUB_PSW')]) {
