@@ -3,6 +3,8 @@
   become: true
   #become_user: root
   #become_method: sudo
+  vars:
+    ansible_become_pass: "{{ my_password }}"
   tasks:
     - name: Ping check host
       ping: ~

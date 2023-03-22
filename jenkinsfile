@@ -26,7 +26,7 @@ pipeline {
 	stage('Run Ansible playbook') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'SSH_USR', passwordVariable: 'SSH_PWS')]) {
-                    sh "ansible-playbook -i hosts deploy_app.yaml --extra-vars 'ansible_ssh_user=${SSH_USR} ansible_ssh_pass=${SSH_PSW}'"
+                    sh "ansible-playbook -i hosts deploy_app.yaml --extra-vars "my_password=1""
                 }
             }
         }
