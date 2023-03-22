@@ -10,7 +10,7 @@ pipeline {
         DOCKERHUB = credentials('dockerhub')
         DOCKER_IMAGE_NAME = "my-python-web"
         DOCKER_IMAGE_TAG = "latest"
-	SSH = credentials('ssh')
+	
     }
 
     stages {
@@ -24,10 +24,11 @@ pipeline {
         }
         
 	stage('Run Ansible playbook') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'SSH_USR', passwordVariable: 'SSH_PWS')]) {
-                    sh "ansible-playbook -i hosts deploy_app.yaml"
-                }
+             steps {
+                 echo "Running playbook.."
+                 sh '''
+		 ansible-playbook -i hosts deploy_app.yaml
+                 '''
             }
         }
 
