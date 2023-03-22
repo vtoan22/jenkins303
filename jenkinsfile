@@ -23,14 +23,11 @@ pipeline {
             }
         }
         
-	stage('Deploy with Ansible') {
+	stage('Run Ansible playbook') {
             steps {
-                ansiblePlaybook(
-                    playbook: 'deploy_app.yaml',
-                    inventory: 'hosts',
-		    extraVars: [ var1: '${SSH_USR}', var2: 'value2' ],
-                    extras: '-u remote_user --ask-pass --ask-become-pass'
-                )
+                withCredentials([usernamePassword(credentialsId: 'ssh', usernameVariable: 'SSH_USR', passwordVariable: 'SSH_PWS')]) {
+                    sh "ansible-playbook playbook.yml --extra-vars 'ansible_ssh_user=${SSH_USR} ansible_ssh_pass=${SSH_PSW}'"
+                }
             }
         }
 
