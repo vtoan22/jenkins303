@@ -4,7 +4,7 @@
   #become_user: root
   #become_method: sudo
   vars:
-    ansible_become_pass: "{{ my_password }}"
+    ansible_become_pass: "1"
   tasks:
     - name: Ping check host
       ping: ~
