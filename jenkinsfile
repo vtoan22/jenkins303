@@ -10,6 +10,7 @@ pipeline {
         DOCKERHUB = credentials('dockerhub')
         DOCKER_IMAGE_NAME = "my-python-web"
         DOCKER_IMAGE_TAG = "latest"
+	SSH = credentials('ssh')
     }
 
     stages {
@@ -27,7 +28,8 @@ pipeline {
                 ansiblePlaybook(
                     playbook: 'deploy_app.yaml',
                     inventory: 'hosts',
-                    extras: '-vv'
+                    #credentialsId: 'ssh-id',
+                    extras: '-u remote_user --ask-pass --ask-become-pass'
                 )
             }
         }
