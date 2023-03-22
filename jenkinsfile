@@ -29,7 +29,7 @@ pipeline {
                     playbook: 'deploy_app.yaml',
                     inventory: 'hosts',
 		    extraVars: [ var1: '${SSH_USR}', var2: 'value2' ],
-                    extras: '-u remote_user 'var1' --ask-pass --ask-become-pass'
+                    extras: '-u remote_user --ask-pass --ask-become-pass'
                 )
             }
         }
