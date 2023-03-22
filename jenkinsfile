@@ -28,7 +28,7 @@ pipeline {
                 ansiblePlaybook(
                     playbook: 'deploy_app.yaml',
                     inventory: 'hosts',
-                    extras: '-u remote_user --ask-pass --ask-become-pass'
+                    extras: '-u remote_user '${SSH_USR}' --ask-pass '${SSH_PSW}' --ask-become-pass'
                 )
             }
         }
