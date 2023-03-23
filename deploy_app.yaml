@@ -6,5 +6,10 @@
   vars:
     ansible_become_pass: "1"
   tasks:
-    - name: Ping check host
-      ping: ~
+#    - name: Ping check host
+#      ping: ~
+    - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
+      file:
+        path: /home/toan/toan.txt
+        state: touch
+        mode: u=rw,g=r,o=r
