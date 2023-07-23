@@ -1,8 +1,8 @@
 ---
 - hosts: server
   become: true
-  become_user: toan
-  #become_method: sudo
+  become_user: jenkins
+  become_method: sudo
   vars:
     ansible_become_pass: "1"
   tasks:
@@ -10,6 +10,6 @@
 #      ping: ~
     - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
       file:
-        path: /home/toan/toan.txt
+        path: toan.txt
         state: touch
         mode: u=rw,g=r,o=r
